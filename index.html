@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blue">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SANCHO TECH IMAGE GENERATOR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #000000, #007bff);
+      color: blue;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 30px;
+      transition: background 0.3s ease;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color:#ffec00;
+      text-shadow: 0 0 10px #00aaff;
+    }
+
+    p {
+      opacity: 0.8;
+    }
+
+    .generator-box {
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #07ffff, #0e9);
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      color: blue;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    #loading {
+      margin-top: 20px;
+      display: none;
+      color: #1a233a;
+      font-weight: 600;
+    }
+
+    #result img {
+      margin-top: 25px;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      transition: opacity 0.5s ease;
+    }
+
+    footer {
+      margin-top: 40px;
+      opacity: 0.6;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>SANCHO TECH IMAGE GENERATOR</h1>
+  <p>Enter a description and generate an AI-powered image.</p>
+
+  <div class="generator-box">
+    <input type="text" id="prompt" placeholder="e.g. SANCHO TECH LOGO" />
+    <button onclick="generateImage()">Generate</button>
+    <div id="loading">⏳ Generating image...</div>
+    <div id="result"></div>
+  </div>
+
+  <footer>Powered by KeithTech API</footer>
+
+  <script>
+    async function generateImage() {
+      const prompt = document.getElementById("prompt").value.trim();
+      const loading = document.getElementById("loading");
+      const result = document.getElementById("result");
+
+      if (!prompt) {
+        alert("Please enter a prompt!");
+        return;
+      }
+
+      loading.style.display = "block";
+      result.innerHTML = "";
+
+      try {
+        const res = await fetch(`https://keithtech-apis-site.vercel.app/tools/text2img?prompt=${encodeURIComponent(prompt)}`);
+        const data = await res.json();
+
+        if (data.image_url || data.image || data.result) {
+          const imgUrl = data.image_url || data.image || data.result;
+          const img = document.createElement("img");
+          img.src = imgUrl;
+          result.appendChild(img);
+        } else {
+          result.innerHTML = `<p style="color: blue;">⚠️ No image returned from API.</p>`;
+        }
+      } catch (err) {
+        console.error(err);
+        result.innerHTML = `<p style="color: yellow;">❌ Error fetching from API.</p>`;
+      } finally {
+        loading.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
