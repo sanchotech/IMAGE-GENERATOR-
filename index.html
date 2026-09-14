@@ -1,144 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="blue">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SANCHO TECH IMAGE GENERATOR</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
-
-    body {
-      background: linear-gradient(145deg, #000000, #007bff);
-      color: blue;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      padding: 30px;
-      transition: background 0.3s ease;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color:#ffec00;
-      text-shadow: 0 0 10px #00aaff;
-    }
-
-    p {
-      opacity: 0.8;
-    }
-
-    .generator-box {
-      margin-top: 30px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 20px;
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    }
-
-    input {
-      width: 100%;
-      padding: 12px 15px;
-      border-radius: 10px;
-      border: none;
-      outline: none;
-      margin-bottom: 15px;
-      font-size: 16px;
-    }
-
-    button {
-      background: linear-gradient(90deg, #07ffff, #0e9);
-      border: none;
-      padding: 12px 25px;
-      border-radius: 10px;
-      color: blue;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-    }
-
-    #loading {
-      margin-top: 20px;
-      display: none;
-      color: #1a233a;
-      font-weight: 600;
-    }
-
-    #result img {
-      margin-top: 25px;
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-      transition: opacity 0.5s ease;
-    }
-
-    footer {
-      margin-top: 40px;
-      opacity: 0.6;
-      font-size: 14px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sancho Tech | Bet Predictor</title>
+<style>
+:root{--black:#050607;--panel:#0c1017;--panel2:#101722;--blue:#0789ff;--blue2:#0052c9;--yellow:#ffd400;--muted:#9aa9bd;--line:#123d68;--green:#21e879}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% 0%,#0b1d3b 0,#050607 38%),#050607;color:#fff;font-family:Arial,Helvetica,sans-serif;min-height:100vh}
+button,select{font:inherit}.app{display:flex;min-height:100vh}.sidebar{width:265px;background:#050708;border-right:1px solid #10385e;padding:22px 16px;flex-shrink:0}.brand{display:flex;align-items:center;gap:10px;margin-bottom:30px}.brand-mark{font-size:45px;font-weight:900;font-style:italic;color:var(--yellow);text-shadow:4px 3px var(--blue)}.brand h1{font-size:22px;margin:0;color:#fff}.brand h1 span{color:var(--yellow)}.brand small{display:block;color:#9eb0c8;font-size:10px;margin-top:4px}.nav{display:grid;gap:8px}.nav button{border:1px solid transparent;background:transparent;color:#d8e2f0;text-align:left;padding:14px 13px;border-radius:10px;cursor:pointer}.nav button:hover,.nav button.active{background:linear-gradient(90deg,var(--yellow),#ffb800);color:#050607;font-weight:700}.section-title{color:var(--yellow);font-size:12px;font-weight:700;margin:28px 4px 12px}.platform{display:flex;align-items:center;gap:10px;color:#b9c8dc;font-size:14px;margin:13px 4px}.check{width:20px;height:20px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-size:12px}.promo{margin-top:35px;border:1px solid var(--yellow);border-radius:10px;padding:18px 12px;text-align:center;color:var(--yellow);font-weight:700}.promo span{display:block;color:#d8e2f0;font-weight:400;font-size:13px;margin-top:7px}
+.main{flex:1;padding:20px;min-width:0}.topbar{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #12334e;padding-bottom:18px;margin-bottom:18px}.top-actions{display:flex;gap:10px}.top-actions button{background:#0c1118;color:#dbe7f7;border:1px solid #294052;border-radius:25px;padding:11px 18px;cursor:pointer}.top-actions button.active{background:var(--yellow);color:#050607;border-color:var(--yellow);font-weight:700}.pro{border:1px solid var(--yellow);color:var(--yellow);padding:10px 15px;border-radius:8px;font-weight:700}.hero{border:1px solid var(--blue);border-radius:14px;background:linear-gradient(105deg,#08101d,#061a3b 60%,#07111b);padding:28px;display:flex;align-items:center;justify-content:space-between;gap:20px;overflow:hidden}.hero h2{font-size:50px;line-height:.9;margin:0;color:#fff;font-style:italic}.hero h2 span{color:var(--yellow)}.hero p{color:#b6c9e1;margin-bottom:0}.hero-art{font-size:80px;filter:drop-shadow(0 0 12px #0789ff);transform:rotate(-8deg)}.crash{border:2px solid var(--blue);border-radius:16px;padding:15px 25px;text-align:center;min-width:180px}.crash small{color:#d8e2f0}.crash strong{display:block;color:var(--yellow);font-size:34px;margin-top:8px}
+.grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(280px,1fr);gap:18px;margin-top:18px}.panel{background:linear-gradient(145deg,#0b1017,#080b10);border:1px solid #124d83;border-radius:14px;padding:15px}.tabs{display:flex;border:1px solid #15528b;border-radius:10px;overflow:hidden;margin-bottom:15px}.tabs button{flex:1;padding:12px;background:#090e15;color:#c7d5e7;border:0;border-right:1px solid #15528b;cursor:pointer}.tabs button:last-child{border:0}.tabs button.active{background:var(--yellow);color:#050607;font-weight:700}.prediction{display:grid;grid-template-columns:1fr 1fr;gap:12px}.prediction-main{border:1px solid #1766aa;border-radius:13px;padding:25px;text-align:center;background:radial-gradient(circle at 50% 0,#0b2450,#05070a 70%)}.prediction-main small{color:#dbe7f7}.prediction-main .big{font-size:66px;color:var(--yellow);font-weight:800;margin:15px 0}.metrics{border:1px solid #1766aa;border-radius:13px;padding:18px}.metric{padding:13px 0;border-bottom:1px solid #173b5d;display:flex;justify-content:space-between;gap:10px}.metric:last-child{border-bottom:0}.metric label{color:#55c6ff}.metric b{color:#fff}.up{color:var(--green)!important}.generate{width:100%;margin:14px 0;padding:15px;border:0;border-radius:10px;background:linear-gradient(90deg,var(--yellow),#ffad00);font-weight:800;cursor:pointer;color:#050607}.results{display:flex;gap:8px;flex-wrap:wrap}.chip{padding:9px 12px;border:1px solid #165da0;border-radius:8px;background:#071225;color:#d9eaff}.chip strong{color:var(--yellow)}.side-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.game-card{border:1px solid #15528b;border-radius:12px;padding:17px 10px;text-align:center;background:#080e17}.game-card .ico{font-size:28px}.game-card h4{margin:9px 0;color:#dbe7f7}.open{border:1px solid var(--yellow);border-radius:20px;background:transparent;color:#fff;padding:7px 22px;cursor:pointer}.open:hover{background:var(--yellow);color:#050607}.settings{margin-top:15px}.field{display:flex;justify-content:space-between;align-items:center;margin:12px 0;color:#c6d5e8}.field select{background:#111a28;color:#fff;border:1px solid #24527d;padding:9px;border-radius:7px}.save{width:100%;background:var(--blue);border:0;color:#fff;padding:11px;border-radius:20px;cursor:pointer}.history{margin-top:18px}.table-wrap{overflow-x:auto}.table{width:100%;border-collapse:collapse;min-width:600px}.table th,.table td{text-align:left;padding:12px 9px;border-bottom:1px solid #173b5d;font-size:13px}.table th{color:#b9cce4}.table td:nth-child(4){color:var(--yellow);font-weight:700}.pending{color:#55c6ff}.important{border:1px solid var(--yellow);border-radius:10px;padding:14px;margin-top:15px;color:#cbd8e8;font-size:12px;line-height:1.5}.important b{color:var(--yellow)}footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #12334e;margin-top:18px;padding:20px 0;color:#8ca4bf;font-size:12px}footer strong{color:var(--yellow);font-size:17px}
+@media(max-width:1000px){.sidebar{width:220px}.hero h2{font-size:38px}.hero-art{font-size:55px}.crash{min-width:150px}.grid{grid-template-columns:1fr}}
+@media(max-width:700px){.app{display:block}.sidebar{width:100%;border-right:0;border-bottom:1px solid #10385e;padding:14px}.brand{margin-bottom:14px}.nav{display:flex;overflow-x:auto}.nav button{white-space:nowrap;padding:10px}.section-title,.platform,.promo{display:none}.main{padding:12px}.topbar{gap:10px;align-items:flex-start}.top-actions{overflow-x:auto}.top-actions button{white-space:nowrap;padding:9px 12px}.pro{white-space:nowrap}.hero{padding:20px;display:block}.hero h2{font-size:39px}.hero-art{display:none}.crash{margin-top:20px}.prediction{grid-template-columns:1fr}.prediction-main .big{font-size:52px}footer{display:block;text-align:center;line-height:2}}
+</style>
 </head>
 <body>
-  <h1>SANCHO TECH IMAGE GENERATOR</h1>
-  <p>Enter a description and generate an AI-powered image.</p>
-
-  <div class="generator-box">
-    <input type="text" id="prompt" placeholder="e.g. SANCHO TECH LOGO" />
-    <button onclick="generateImage()">Generate</button>
-    <div id="loading">⏳ Generating image...</div>
-    <div id="result"></div>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">SANCHO TECH</div><div><h1>BET <span>PREDICTOR</span></h1><small>Smart Predictions • Better Bets</small></div></div>
+  <nav class="nav">
+    <button class="active" data-game="Aviator">✈️ &nbsp; Aviator Predictor</button>
+    <button data-game="Spin City">🎡 &nbsp; Spin City Predictor</button>
+    <button data-game="Mwos Betting">Ⓜ️ &nbsp; Mwos Betting Predictor</button>
+    <button data-game="Sports Betting">⚽ &nbsp; Sports Betting Predictor</button>
+    <button data-game="Crash / Dice">🎲 &nbsp; Crash / Dice Predictor</button>
+    <button data-game="Slots">🎰 &nbsp; Slots Predictor</button>
+    <button data-game="Other Sites">🎁 &nbsp; Other Betting Sites</button>
+  </nav>
+  <div class="section-title">SUPPORTED PLATFORMS</div>
+  <div class="platform"><span class="check">✓</span>Aviator</div><div class="platform"><span class="check">✓</span>Spin City</div><div class="platform"><span class="check">✓</span>Mwos Betting</div><div class="platform"><span class="check">✓</span>1xBet</div><div class="platform"><span class="check">✓</span>Betway</div><div class="platform"><span class="check">✓</span>SportPesa</div><div class="platform"><span class="check">✓</span>MELBet</div><div class="platform"><span class="check">✓</span>888Sport</div>
+  <div class="promo">🎯 More Predictions<span>More Chances to Win!</span></div>
+</aside>
+<main class="main">
+  <header class="topbar"><div class="top-actions"><button class="active">⌂ &nbsp; Home</button><button onclick="showHistory()">◷ &nbsp; History</button><button onclick="alert('Settings are available below.')">⚙ &nbsp; Settings</button></div><div class="pro">♛ &nbsp; PRO<br><small>Win Smarter</small></div></header>
+  <section class="hero"><div><h2 id="heroTitle">AVIATOR<br><span>PREDICTOR</span></h2><p>Analyze • Predict • Play Smart</p></div><div class="hero-art">✈️</div><div class="crash"><small>Next Crash Point</small><strong id="heroResult">3.42x</strong></div></section>
+  <div class="grid">
+    <section>
+      <div class="panel"><div class="tabs"><button class="active">✈️ &nbsp; <span id="tabName">Aviator</span></button><button>⚙ &nbsp; Manual</button><button>⚡ &nbsp; Auto</button></div>
+        <div class="prediction"><div class="prediction-main"><small>PREDICTED CRASH POINT</small><div class="big" id="result">3.42x</div><small>Simulated prediction</small></div><div class="metrics"><div class="metric"><label>Prediction Confidence</label><b id="confidence">87%</b></div><div class="metric"><label>Trend</label><b class="up">↗ UP</b></div><div class="metric"><label>Last 5 Results</label><b id="lastFive">2.38x &nbsp; 1.76x &nbsp; 4.12x &nbsp; 3.06x &nbsp; 7.21x</b></div></div></div>
+        <button class="generate" id="generate">⟳ &nbsp; GET NEW PREDICTION</button><div style="color:#c7d6e8;font-size:13px;margin-bottom:10px">Recent <span id="recentName">Aviator</span> Results</div><div class="results" id="results"></div>
+      </div>
+      <div class="panel history" id="historyPanel"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b style="color:var(--yellow)">◷ &nbsp; PREDICTION HISTORY</b><button style="background:none;border:0;color:#55c6ff;cursor:pointer" onclick="clearHistory()">Clear</button></div><div class="table-wrap"><table class="table"><thead><tr><th>Time</th><th>Game</th><th>Prediction</th><th>Result</th></tr></thead><tbody id="historyBody"></tbody></table></div></div>
+    </section>
+    <aside>
+      <div class="panel"><b style="color:var(--yellow)">⚙ &nbsp; OTHER GAME PREDICTORS</b><div class="side-grid" style="margin-top:14px"><div class="game-card"><div class="ico">🎰</div><h4>Spin City</h4><button class="open" data-select="Spin City">Open</button></div><div class="game-card"><div class="ico">Ⓜ️</div><h4>Mwos Betting</h4><button class="open" data-select="Mwos Betting">Open</button></div><div class="game-card"><div class="ico">⚽</div><h4>Sports Betting</h4><button class="open" data-select="Sports Betting">Open</button></div><div class="game-card"><div class="ico">🎲</div><h4>Crash / Dice</h4><button class="open" data-select="Crash / Dice">Open</button></div><div class="game-card"><div class="ico">🎰</div><h4>Slots</h4><button class="open" data-select="Slots">Open</button></div><div class="game-card"><div class="ico">🔗</div><h4>Other Sites</h4><button class="open" data-select="Other Sites">Open</button></div></div></div>
+      <div class="panel settings"><b style="color:var(--yellow)">⚙ &nbsp; QUICK SETTINGS</b><div class="field">Prediction Interval<select><option>1 Minute</option><option>5 Minutes</option><option>10 Minutes</option></select></div><div class="field">Risk Level<select><option>Medium</option><option>Low</option><option>High</option></select></div><button class="save" onclick="alert('Settings saved for this demo.')">▣ &nbsp; Save Settings</button></div>
+      <div class="important"><b>🛡 IMPORTANT</b><br>• This tool provides simulated predictions based on random values.<br>• It is not 100% accurate and cannot guarantee wins.<br>• Always play responsibly and within your budget.<br>• For entertainment and research purposes only.</div>
+    </aside>
   </div>
-
-  <footer>Powered by KeithTech API</footer>
-
-  <script>
-    async function generateImage() {
-      const prompt = document.getElementById("prompt").value.trim();
-      const loading = document.getElementById("loading");
-      const result = document.getElementById("result");
-
-      if (!prompt) {
-        alert("Please enter a prompt!");
-        return;
-      }
-
-      loading.style.display = "block";
-      result.innerHTML = "";
-
-      try {
-        const res = await fetch(`https://keithtech-apis-site.vercel.app/tools/text2img?prompt=${encodeURIComponent(prompt)}`);
-        const data = await res.json();
-
-        if (data.image_url || data.image || data.result) {
-          const imgUrl = data.image_url || data.image || data.result;
-          const img = document.createElement("img");
-          img.src = imgUrl;
-          result.appendChild(img);
-        } else {
-          result.innerHTML = `<p style="color: blue;">⚠️ No image returned from API.</p>`;
-        }
-      } catch (err) {
-        console.error(err);
-        result.innerHTML = `<p style="color: yellow;">❌ Error fetching from API.</p>`;
-      } finally {
-        loading.style.display = "none";
-      }
-    }
-  </script>
+  <footer><div><span style="color:#22bfff;font-weight:700">PLAY SMART</span> &nbsp; / &nbsp; <span style="color:var(--yellow);font-weight:700">STAY FOCUSED</span> &nbsp; / &nbsp; WIN BIG</div><div>Developed by <strong>Sancho Tech</strong></div></footer>
+</main></div>
+<script>
+const state={game:'Aviator',history:[],values:[2.38,1.76,4.12,3.06,7.21,1.34,5.67,2.93,8.41,1.98]};
+const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);
+function multiplier(){let r=Math.random();if(r<.45)return (1.01+Math.random()*.99).toFixed(2);if(r<.85)return (2+Math.random()*3).toFixed(2);if(r<.97)return (5+Math.random()*10).toFixed(2);return (15+Math.random()*85).toFixed(2)}
+function selectGame(game){state.game=game;$$('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.game===game));$('#tabName').textContent=game;$('#recentName').textContent=game;$('#heroTitle').innerHTML=game.toUpperCase()+'<br><span>PREDICTOR</span>';generate(false)}
+function generate(add=true){let val=multiplier();$('#result').textContent=val+'x';$('#heroResult').textContent=val+'x';$('#confidence').textContent=(70+Math.floor(Math.random()*25))+'%';state.values.unshift(Number(val));state.values=state.values.slice(0,10);$('#lastFive').textContent=state.values.slice(0,5).map(x=>x.toFixed(2)+'x').join('  ');renderResults();if(add){state.history.unshift({time:new Date().toLocaleTimeString(),game:state.game,pred:val+'x'});state.history=state.history.slice(0,10);renderHistory()}}
+function renderResults(){$('#results').innerHTML=state.values.map(v=>`<div class="chip">${v.toFixed(2)}x</div>`).join('')}
+function renderHistory(){$('#historyBody').innerHTML=state.history.map(x=>`<tr><td>${x.time}</td><td>${x.game}</td><td>${x.pred}</td><td class="pending">Pending</td></tr>`).join('')||'<tr><td colspan="4" style="color:#71839b">No predictions yet.</td></tr>'}
+function clearHistory(){state.history=[];renderHistory()}function showHistory(){$('#historyPanel').scrollIntoView({behavior:'smooth'})}
+$$('.nav button').forEach(b=>b.addEventListener('click',()=>selectGame(b.dataset.game)));$$('[data-select]').forEach(b=>b.addEventListener('click',()=>selectGame(b.dataset.select)));$('#generate').addEventListener('click',()=>{const b=$('#generate');b.disabled=true;b.textContent='CALCULATING...';setTimeout(()=>{generate(true);b.disabled=false;b.textContent='⟳  GET NEW PREDICTION'},700)});renderResults();renderHistory();
+</script>
 </body>
 </html>
